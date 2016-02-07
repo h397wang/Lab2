@@ -58,9 +58,9 @@ use ieee.numeric_std.all;
 entity Lab2 is port (
       
       sw  :   in  std_logic_vector(17 downto 0); -- 18 dip switches
-	  hex6,hex7		:  	out std_logic_vector(7 downto 0); -- display for operand 2
-      hex4,hex5 	:   out std_logic_vector(7 downto 0); -- display for operand 1
-      hex0, hex1, hex3 :   out std_logic_vector(7 downto 0)  -- display for the result
+	  hex6,hex7		:  	out std_logic_vector(7 downto 0); -- display operand 2
+      hex4,hex5 	:   out std_logic_vector(7 downto 0); -- display operand 1
+      hex0, hex1, hex3 :   out std_logic_vector(7 downto 0)  -- display the result
 );
 end Lab2;
 
@@ -79,21 +79,23 @@ architecture SimpleCircuit of Lab2 is
    end component;
 	
 -- Create any signals, or temporary variables to be used
--- Unsigned is a signal which can be used to perform math operations such as +, -, *
--- std_logic_vector is a signal which can be used for logic operations such as OR, AND, NOT, XOR
+
+--  unsigned is a signal which can be used to perform math operations such as +, -, *
+--  std_logic_vector is a signal which can be used for logic operations such as OR, AND, NOT, XOR
 --
    signal operand1, operand2: std_logic_vector(7 downto 0); -- 8-bit intermediate signals (wires)
    signal result: std_logic_vector(11 downto 0); -- output signal for the three 7segment displays
    signal operator: std_logic_vector(1 downto 0); -- input signal represents operator
    
+-- Here the circuit begins
 
 begin
 
--- Intermediate signal assignments
+-- intermediate signal assignments
 
-   operand1 <= sw(7 downto 0);  -- connect the lowest 8 switches to operand1
-   operand2 <= sw(15 downto 8);  -- connect the highest 8 switches to operand2
-   operator <= sw(17 downto 16); -- connect 2 switches to input operator signal
+   operand1 <= sw(7 downto 0);  -- connect the lowest 4 switches to operand1
+   operand2 <= sw(15 downto 8);  -- connect the highest 4 switches to operand2
+   operator <= sw(17 downto 16); -- connect switches to input operator signal
    
    -- concatenate for 12 bits
    operand1 <= "0000"&operand1;
