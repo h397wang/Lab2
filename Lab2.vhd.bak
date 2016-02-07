@@ -56,11 +56,12 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity Lab2 is port (
-      
+
+      ledr : out std_logic_vector(17 downto 0); -- displays the operator and result on the other end 
       sw  :   in  std_logic_vector(17 downto 0); -- 18 dip switches
-	  hex6,hex7		:  	out std_logic_vector(7 downto 0); -- display operand 2
-      hex4,hex5 	:   out std_logic_vector(7 downto 0); -- display operand 1
-      hex0, hex1, hex3 :   out std_logic_vector(7 downto 0)  -- display the result
+	  hex6,hex7		:  	out std_logic_vector(6 downto 0); -- display for operand 2
+      hex4,hex5 	:   out std_logic_vector(6 downto 0); -- display for operand 1
+      hex0, hex1, hex2 :   out std_logic_vector(6 downto 0)  -- display for the result
 );
 end Lab2;
 
@@ -79,41 +80,45 @@ architecture SimpleCircuit of Lab2 is
    end component;
 	
 -- Create any signals, or temporary variables to be used
-
---  unsigned is a signal which can be used to perform math operations such as +, -, *
---  std_logic_vector is a signal which can be used for logic operations such as OR, AND, NOT, XOR
+-- Unsigned is a signal which can be used to perform math operations such as +, -, *
+-- std_logic_vector is a signal which can be used for logic operations such as OR, AND, NOT, XOR
 --
    signal operand1, operand2: std_logic_vector(7 downto 0); -- 8-bit intermediate signals (wires)
+   signal operand1_mod, operand2_mod: std_logic_vector(11 downto 0);
    signal result: std_logic_vector(11 downto 0); -- output signal for the three 7segment displays
    signal operator: std_logic_vector(1 downto 0); -- input signal represents operator
-   
--- Here the circuit begins
+   signal blank: std_logic;
 
 begin
 
--- intermediate signal assignments
+-- Intermediate signal assignments
 
-   operand1 <= sw(7 downto 0);  -- connect the lowest 4 switches to operand1
-   operand2 <= sw(15 downto 8);  -- connect the highest 4 switches to operand2
-   operator <= sw(17 downto 16); -- connect switches to input operator signal
+   operand1 <= sw(7 downto 0);  -- connect the lowest 8 switches to operand1
+   operand2 <= sw(15 downto 8);  -- connect the highest 8 switches to operand2
+   operator <= sw(17 downto 16); -- connect 2 switches to input operator signal
    
    -- concatenate for 12 bits
-   operand1 <= "0000"&operand1;
-   operand2 <= "0000"&operand2;
+   -- apparently you can't just re-assign the signal variable in this case because the signal vector
+   -- is declared to be a fixed length
+   operand1_mod <= "0000"&operand1;
+   operand2_mod <= "0000"&operand2;
    
 -- implementing a multiplexer, dependent on the operator input signal
    
 with operator select    
-	result <= 	operand1 AND operand2			when "00",      
-				operand1 OR operand2          	when "01",
-				operand1 XOR operand2	        when "10",
-				std_logic_vector(unsigned(operand1) + unsigned(operand2)) when "11"; 
+	result <= 	operand1_mod AND operand2_mod			when "00",      
+				operand1_mod OR operand2_mod          	when "01",
+				operand1_mod XOR operand2_mod	        when "10",
+				std_logic_vector(unsigned(operand1_mod) + unsigned(operand2_mod)) when "11"; 
 				-- note that the + operator only supports unsigned vector types
 				-- the input signals are cast to type, then cast back to std_logic_vector
 		 
    
 -- light up LED to display operator
    ledr(17 downto 16) <= operator;
+   
+-- light up the 9 red LEDs to display the result 
+   ledr(8 downto 0) <= result(8 downto 0);
 
 -- Instantiate instants of each SevenSegment components
 -- Think of the instantiation as a constructor that takes in signal inputs and maps it to the corresponding
@@ -125,12 +130,12 @@ with operator select
    Operand2_MSD_display: SevenSegment port map(operand2(7 downto 4), '0', hex7);
    Operand2_LSD_display: SevenSegment port map(operand2(3 downto 0), '0', hex6);
    
-   if (result(0) = '0') then
-		result_MSD: SevenSegment port map(result(11 downto 8), '1', hex2 ); -- seven-segment is blank 
-   else 
-		result_MSD: SevenSegment port map(result(11 downto 8), '0', hex2 ); -- display the carry bit, (1)
-   end if
+   with result(8) select
+		blank <= '1' when '0',
+				 '0' when '1';
+
    
+   result_MSD: SevenSegment port map(result(11 downto 8), not result(8), hex2 ); --
    result_2ndD: SevenSegment port map(result(7 downto 4), '0', hex1 ); -- display the second digit
    result_LSD: SevenSegment port map(result(3 downto 0), '0', hex0 ); -- dispaly the least significant digit
   
