@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Lab2
-Sun Feb 07 18:14:09 2016
+Thu Feb 11 13:28:03 2016
 Quartus II Version 9.0 Build 184 04/29/2009 Service Pack 1 SJ Web Edition
 
 
@@ -13,14 +13,13 @@ Quartus II Version 9.0 Build 184 04/29/2009 Service Pack 1 SJ Web Edition
   5. Analysis & Synthesis Resource Usage Summary
   6. Analysis & Synthesis Resource Utilization by Entity
   7. General Register Statistics
-  8. Multiplexer Restructuring Statistics (Restructuring Performed)
-  9. Port Connectivity Checks: "SevenSegment:result_LSD"
- 10. Port Connectivity Checks: "SevenSegment:result_2ndD"
- 11. Port Connectivity Checks: "SevenSegment:Operand2_LSD_display"
- 12. Port Connectivity Checks: "SevenSegment:Operand2_MSD_display"
- 13. Port Connectivity Checks: "SevenSegment:Operand1_LSD_display"
- 14. Port Connectivity Checks: "SevenSegment:Operand1_MSD_display"
- 15. Analysis & Synthesis Messages
+  8. Port Connectivity Checks: "SevenSegment:result_LSD"
+  9. Port Connectivity Checks: "SevenSegment:result_2ndD"
+ 10. Port Connectivity Checks: "SevenSegment:Operand2_LSD_display"
+ 11. Port Connectivity Checks: "SevenSegment:Operand2_MSD_display"
+ 12. Port Connectivity Checks: "SevenSegment:Operand1_LSD_display"
+ 13. Port Connectivity Checks: "SevenSegment:Operand1_MSD_display"
+ 14. Analysis & Synthesis Messages
 
 
 
@@ -46,13 +45,13 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +------------------------------------+----------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun Feb 07 18:14:09 2016        ;
+; Analysis & Synthesis Status        ; Successful - Thu Feb 11 13:28:03 2016        ;
 ; Quartus II Version                 ; 9.0 Build 184 04/29/2009 SP 1 SJ Web Edition ;
 ; Revision Name                      ; Lab2                                         ;
 ; Top-level Entity Name              ; Lab2                                         ;
 ; Family                             ; Cyclone II                                   ;
-; Total logic elements               ; 68                                           ;
-;     Total combinational functions  ; 68                                           ;
+; Total logic elements               ; 29                                           ;
+;     Total combinational functions  ; 29                                           ;
 ;     Dedicated logic registers      ; 0                                            ;
 ; Total registers                    ; 0                                            ;
 ; Total pins                         ; 85                                           ;
@@ -152,17 +151,17 @@ applicable agreement for further details.
 +---------------------------------------------+--------+
 ; Resource                                    ; Usage  ;
 +---------------------------------------------+--------+
-; Estimated Total logic elements              ; 68     ;
+; Estimated Total logic elements              ; 29     ;
 ;                                             ;        ;
-; Total combinational functions               ; 68     ;
+; Total combinational functions               ; 29     ;
 ; Logic element usage by number of LUT inputs ;        ;
-;     -- 4 input functions                    ; 56     ;
-;     -- 3 input functions                    ; 11     ;
+;     -- 4 input functions                    ; 28     ;
+;     -- 3 input functions                    ; 0      ;
 ;     -- <=2 input functions                  ; 1      ;
 ;                                             ;        ;
 ; Logic elements by mode                      ;        ;
-;     -- normal mode                          ; 60     ;
-;     -- arithmetic mode                      ; 8      ;
+;     -- normal mode                          ; 29     ;
+;     -- arithmetic mode                      ; 0      ;
 ;                                             ;        ;
 ; Total registers                             ; 0      ;
 ;     -- Dedicated logic registers            ; 0      ;
@@ -170,9 +169,9 @@ applicable agreement for further details.
 ;                                             ;        ;
 ; I/O pins                                    ; 85     ;
 ; Maximum fan-out node                        ; sw[16] ;
-; Maximum fan-out                             ; 17     ;
-; Total fan-out                               ; 312    ;
-; Average fan-out                             ; 2.04   ;
+; Maximum fan-out                             ; 21     ;
+; Total fan-out                               ; 165    ;
+; Average fan-out                             ; 1.45   ;
 +---------------------------------------------+--------+
 
 
@@ -181,13 +180,11 @@ applicable agreement for further details.
 +----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------+--------------+
 ; Compilation Hierarchy Node             ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                     ; Library Name ;
 +----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------+--------------+
-; |Lab2                                  ; 68 (26)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 85   ; 0            ; |Lab2                                   ; work         ;
+; |Lab2                                  ; 29 (1)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 85   ; 0            ; |Lab2                                   ; work         ;
 ;    |SevenSegment:Operand1_LSD_display| ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Lab2|SevenSegment:Operand1_LSD_display ; work         ;
 ;    |SevenSegment:Operand1_MSD_display| ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Lab2|SevenSegment:Operand1_MSD_display ; work         ;
 ;    |SevenSegment:Operand2_LSD_display| ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Lab2|SevenSegment:Operand2_LSD_display ; work         ;
 ;    |SevenSegment:Operand2_MSD_display| ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Lab2|SevenSegment:Operand2_MSD_display ; work         ;
-;    |SevenSegment:result_2ndD|          ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Lab2|SevenSegment:result_2ndD          ; work         ;
-;    |SevenSegment:result_LSD|           ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Lab2|SevenSegment:result_LSD           ; work         ;
 +----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -205,15 +202,6 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Number of registers using Clock Enable       ; 0     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
-
-
-+------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |Lab2|Mux10                ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
 
 +-----------------------------------------------------+
@@ -276,7 +264,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 9.0 Build 184 04/29/2009 Service Pack 1 SJ Web Edition
-    Info: Processing started: Sun Feb 07 18:14:03 2016
+    Info: Processing started: Thu Feb 11 13:27:59 2016
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Lab2 -c Lab2
 Info: Found 4 design units, including 2 entities, in source file Lab2.vhd
     Info: Found design unit 1: SevenSegment-Behavioral
@@ -284,7 +272,8 @@ Info: Found 4 design units, including 2 entities, in source file Lab2.vhd
     Info: Found entity 1: SevenSegment
     Info: Found entity 2: Lab2
 Info: Elaborating entity "Lab2" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at Lab2.vhd(90): object "blank" assigned a value but never read
+Warning (10541): VHDL Signal Declaration warning at Lab2.vhd(87): used implicit default value for signal "operand1_mod" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at Lab2.vhd(87): used implicit default value for signal "operand2_mod" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Warning (10873): Using initial value X (don't care) for net "ledr[15]" at Lab2.vhd(60)
 Warning (10873): Using initial value X (don't care) for net "ledr[14]" at Lab2.vhd(60)
 Warning (10873): Using initial value X (don't care) for net "ledr[13]" at Lab2.vhd(60)
@@ -301,19 +290,23 @@ Warning: Output pins are stuck at VCC or GND
     Warning (13410): Pin "ledr[13]" is stuck at GND
     Warning (13410): Pin "ledr[14]" is stuck at GND
     Warning (13410): Pin "ledr[15]" is stuck at GND
-    Warning (13410): Pin "hex2[0]" is stuck at VCC
+    Warning (13410): Pin "hex0[0]" is stuck at GND
+    Warning (13410): Pin "hex0[4]" is stuck at GND
+    Warning (13410): Pin "hex0[5]" is stuck at GND
+    Warning (13410): Pin "hex1[0]" is stuck at GND
+    Warning (13410): Pin "hex1[4]" is stuck at GND
+    Warning (13410): Pin "hex1[5]" is stuck at GND
+    Warning (13410): Pin "hex2[1]" is stuck at VCC
+    Warning (13410): Pin "hex2[2]" is stuck at VCC
     Warning (13410): Pin "hex2[3]" is stuck at VCC
-    Warning (13410): Pin "hex2[4]" is stuck at VCC
-    Warning (13410): Pin "hex2[5]" is stuck at VCC
-    Warning (13410): Pin "hex2[6]" is stuck at VCC
-Info: Implemented 153 device resources after synthesis - the final resource count might be different
+Info: Implemented 114 device resources after synthesis - the final resource count might be different
     Info: Implemented 18 input pins
     Info: Implemented 67 output pins
-    Info: Implemented 68 logic cells
-Info: Quartus II Analysis & Synthesis was successful. 0 errors, 21 warnings
-    Info: Peak virtual memory: 242 megabytes
-    Info: Processing ended: Sun Feb 07 18:14:09 2016
-    Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:06
+    Info: Implemented 29 logic cells
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 26 warnings
+    Info: Peak virtual memory: 239 megabytes
+    Info: Processing ended: Thu Feb 11 13:28:03 2016
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:04
 
 

@@ -1,5 +1,5 @@
 Flow report for Lab2
-Sun Feb 07 18:14:46 2016
+Thu Feb 11 13:28:34 2016
 Quartus II Version 9.0 Build 184 04/29/2009 Service Pack 1 SJ Web Edition
 
 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Flow Summary                                                                      ;
 +------------------------------------+----------------------------------------------+
-; Flow Status                        ; Successful - Sun Feb 07 18:14:46 2016        ;
+; Flow Status                        ; Successful - Thu Feb 11 13:28:34 2016        ;
 ; Quartus II Version                 ; 9.0 Build 184 04/29/2009 SP 1 SJ Web Edition ;
 ; Revision Name                      ; Lab2                                         ;
 ; Top-level Entity Name              ; Lab2                                         ;
@@ -46,8 +46,8 @@ applicable agreement for further details.
 ; Device                             ; EP2C35F672C6                                 ;
 ; Timing Models                      ; Final                                        ;
 ; Met timing requirements            ; Yes                                          ;
-; Total logic elements               ; 68 / 33,216 ( < 1 % )                        ;
-;     Total combinational functions  ; 68 / 33,216 ( < 1 % )                        ;
+; Total logic elements               ; 29 / 33,216 ( < 1 % )                        ;
+;     Total combinational functions  ; 29 / 33,216 ( < 1 % )                        ;
 ;     Dedicated logic registers      ; 0 / 33,216 ( 0 % )                           ;
 ; Total registers                    ; 0                                            ;
 ; Total pins                         ; 85 / 475 ( 18 % )                            ;
@@ -63,7 +63,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 02/07/2016 18:14:04 ;
+; Start date & time ; 02/11/2016 13:28:00 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Lab2                ;
 +-------------------+---------------------+
@@ -74,7 +74,7 @@ applicable agreement for further details.
 +------------------------------------+--------------------------------+---------------+-------------+----------------+
 ; Assignment Name                    ; Value                          ; Default Value ; Entity Name ; Section Id     ;
 +------------------------------------+--------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID              ; 13764775812838.145488684307364 ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID              ; 13764775812838.145521528002636 ; --            ; --          ; --             ;
 ; MAX_CORE_JUNCTION_TEMP             ; 85                             ; --            ; --          ; --             ;
 ; MIN_CORE_JUNCTION_TEMP             ; 0                              ; --            ; --          ; --             ;
 ; PARTITION_COLOR                    ; 16764057                       ; --            ; --          ; Top            ;
@@ -88,11 +88,11 @@ applicable agreement for further details.
 +-------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name             ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +-------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis    ; 00:00:05     ; 1.0                     ; 242 MB              ; 00:00:05                           ;
-; Fitter                  ; 00:00:18     ; 1.0                     ; 296 MB              ; 00:00:18                           ;
-; Assembler               ; 00:00:07     ; 1.0                     ; 269 MB              ; 00:00:07                           ;
-; Classic Timing Analyzer ; 00:00:01     ; 1.0                     ; 176 MB              ; 00:00:00                           ;
-; Total                   ; 00:00:31     ; --                      ; --                  ; 00:00:30                           ;
+; Analysis & Synthesis    ; 00:00:04     ; 1.0                     ; 239 MB              ; 00:00:03                           ;
+; Fitter                  ; 00:00:18     ; 1.0                     ; 293 MB              ; 00:00:18                           ;
+; Assembler               ; 00:00:06     ; 1.0                     ; 265 MB              ; 00:00:06                           ;
+; Classic Timing Analyzer ; 00:00:00     ; 1.0                     ; 173 MB              ; 00:00:00                           ;
+; Total                   ; 00:00:28     ; --                      ; --                  ; 00:00:27                           ;
 +-------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

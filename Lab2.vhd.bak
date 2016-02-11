@@ -57,7 +57,7 @@ use ieee.numeric_std.all;
 
 entity Lab2 is port (
 
-      ledr : out std_logic_vector(17 downto 0); -- displays the operator and result on the other end 
+      ledr : out std_logic_vector(8 downto 0); -- displays the operator and result on the other end 
       sw  :   in  std_logic_vector(17 downto 0); -- 18 dip switches
 	  hex6,hex7		:  	out std_logic_vector(6 downto 0); -- display for operand 2
       hex4,hex5 	:   out std_logic_vector(6 downto 0); -- display for operand 1
@@ -87,7 +87,7 @@ architecture SimpleCircuit of Lab2 is
    signal operand1_mod, operand2_mod: std_logic_vector(11 downto 0);
    signal result: std_logic_vector(11 downto 0); -- output signal for the three 7segment displays
    signal operator: std_logic_vector(1 downto 0); -- input signal represents operator
-   signal blank: std_logic;
+  
 
 begin
 
@@ -100,8 +100,6 @@ begin
    -- concatenate for 12 bits
    -- apparently you can't just re-assign the signal variable in this case because the signal vector
    -- is declared to be a fixed length
-   operand1_mod <= "0000"&operand1;
-   operand2_mod <= "0000"&operand2;
    
 -- implementing a multiplexer, dependent on the operator input signal
    
@@ -130,10 +128,6 @@ with operator select
    Operand2_MSD_display: SevenSegment port map(operand2(7 downto 4), '0', hex7);
    Operand2_LSD_display: SevenSegment port map(operand2(3 downto 0), '0', hex6);
    
-   with result(8) select
-		blank <= '1' when '0',
-				 '0' when '1';
-
    
    result_MSD: SevenSegment port map(result(11 downto 8), not result(8), hex2 ); --
    result_2ndD: SevenSegment port map(result(7 downto 4), '0', hex1 ); -- display the second digit
