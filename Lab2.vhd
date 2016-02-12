@@ -100,13 +100,15 @@ begin
    -- concatenate for 12 bits
    -- apparently you can't just re-assign the signal variable in this case because the signal vector
    -- is declared to be a fixed length
+   operand1_mod <= "0000"&operand1;
+   operand2_mod <= "0000"&operand2;
    
 -- implementing a multiplexer, dependent on the operator input signal
    
 with operator select    
-	result <= 	operand1_mod AND operand2_mod			when "00",      
-				operand1_mod OR operand2_mod          	when "01",
-				operand1_mod XOR operand2_mod	        when "10",
+	result <= 	operand1_mod and operand2_mod			when "00",      
+				operand1_mod or operand2_mod          	when "01",
+				operand1_mod xor operand2_mod	        when "10",
 				std_logic_vector(unsigned(operand1_mod) + unsigned(operand2_mod)) when "11"; 
 				-- note that the + operator only supports unsigned vector types
 				-- the input signals are cast to type, then cast back to std_logic_vector
@@ -116,7 +118,7 @@ with operator select
    ledr(17 downto 16) <= operator;
    
 -- light up the 9 red LEDs to display the result 
-   ledr(8 downto 0) <= result(8 downto 0);
+   ledr(11 downto 0) <= result(11 downto 0); -- s was the source of error
 
 -- Instantiate instants of each SevenSegment components
 -- Think of the instantiation as a constructor that takes in signal inputs and maps it to the corresponding
